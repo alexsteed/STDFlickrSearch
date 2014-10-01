@@ -14,33 +14,41 @@
 
 @implementation MyViewController
 
+#pragma mark - view events
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
+    // Setting delegates
     myCollectionView.delegate = self;
     myCollectionView.dataSource = self;
     
     myCollectionView.backgroundColor = [UIColor whiteColor];
     
+    // Setting cell
     UINib *cellNib = [UINib nibWithNibName:@"MyCollectionViewCell" bundle:nil];
     [myCollectionView registerNib:cellNib forCellWithReuseIdentifier:@"CELL"];
     
+    // Layout init
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
     [layout setScrollDirection:UICollectionViewScrollDirectionVertical];
     [myCollectionView setCollectionViewLayout:layout];
 }
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+#pragma mark -  UICollectionView Delegate methods
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 10;
+    NSLog(@"Select Cell %li", (long)indexPath.row);
 }
+
+#pragma mark - UICollectionViewDataSource Delegate methods
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)cv cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -56,12 +64,12 @@
     return cell;
 }
 
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    NSLog(@"Select Cell %li", (long)indexPath.row);
+    return 10;
 }
 
-#pragma mark - UICollectionViewLayout delegate Methods
+#pragma mark - UICollectionViewLayout Delegate Methods
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
