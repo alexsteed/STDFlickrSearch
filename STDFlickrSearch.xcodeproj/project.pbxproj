@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5E21528F19DC178800526EA8 /* icecrema.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E21528D19DC178800526EA8 /* icecrema.png */; };
 		5E21529019DC178800526EA8 /* check.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E21528E19DC178800526EA8 /* check.png */; };
+		5E21529919DD2B3400526EA8 /* STDImageStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E21529819DD2B3400526EA8 /* STDImageStore.m */; };
 		5E9D888119DA88CF002C1521 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E9D888019DA88CF002C1521 /* main.m */; };
 		5E9D888419DA88CF002C1521 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E9D888319DA88CF002C1521 /* AppDelegate.m */; };
 		5E9D888A19DA88CF002C1521 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E9D888819DA88CF002C1521 /* Main.storyboard */; };
@@ -33,6 +34,8 @@
 /* Begin PBXFileReference section */
 		5E21528D19DC178800526EA8 /* icecrema.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icecrema.png; sourceTree = "<group>"; };
 		5E21528E19DC178800526EA8 /* check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = check.png; sourceTree = "<group>"; };
+		5E21529719DD2B3400526EA8 /* STDImageStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STDImageStore.h; sourceTree = "<group>"; };
+		5E21529819DD2B3400526EA8 /* STDImageStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STDImageStore.m; sourceTree = "<group>"; };
 		5E9D887B19DA88CF002C1521 /* STDFlickrSearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = STDFlickrSearch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E9D887F19DA88CF002C1521 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5E9D888019DA88CF002C1521 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -100,6 +103,8 @@
 				5E9D888819DA88CF002C1521 /* Main.storyboard */,
 				5E9D888B19DA88CF002C1521 /* Images.xcassets */,
 				5E9D888D19DA88CF002C1521 /* LaunchScreen.xib */,
+				5E21529719DD2B3400526EA8 /* STDImageStore.h */,
+				5E21529819DD2B3400526EA8 /* STDImageStore.m */,
 				5E9D887E19DA88CF002C1521 /* Supporting Files */,
 			);
 			path = STDFlickrSearch;
@@ -236,6 +241,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5E9D888419DA88CF002C1521 /* AppDelegate.m in Sources */,
+				5E21529919DD2B3400526EA8 /* STDImageStore.m in Sources */,
 				5E9D88ED19DBD906002C1521 /* MyViewController.m in Sources */,
 				5E9D888119DA88CF002C1521 /* main.m in Sources */,
 			);
