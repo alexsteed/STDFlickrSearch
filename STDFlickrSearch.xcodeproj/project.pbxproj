@@ -94,6 +94,8 @@
 			children = (
 				5E21528D19DC178800526EA8 /* icecrema.png */,
 				5E21528E19DC178800526EA8 /* check.png */,
+				5E21529719DD2B3400526EA8 /* STDImageStore.h */,
+				5E21529819DD2B3400526EA8 /* STDImageStore.m */,
 				5E9D88EA19DBD906002C1521 /* MyViewController.h */,
 				5E9D88EB19DBD906002C1521 /* MyViewController.m */,
 				5E9D88EC19DBD906002C1521 /* MyViewController.xib */,
@@ -103,8 +105,6 @@
 				5E9D888819DA88CF002C1521 /* Main.storyboard */,
 				5E9D888B19DA88CF002C1521 /* Images.xcassets */,
 				5E9D888D19DA88CF002C1521 /* LaunchScreen.xib */,
-				5E21529719DD2B3400526EA8 /* STDImageStore.h */,
-				5E21529819DD2B3400526EA8 /* STDImageStore.m */,
 				5E9D887E19DA88CF002C1521 /* Supporting Files */,
 			);
 			path = STDFlickrSearch;

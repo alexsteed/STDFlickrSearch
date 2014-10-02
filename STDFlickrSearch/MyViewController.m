@@ -7,10 +7,10 @@
 //
 
 #import "MyViewController.h"
+#import "STDImageStore.h"
 
 @interface MyViewController ()
 
-@property (nonatomic, strong) NSMutableArray *imageStore;
 
 @end
 
@@ -24,13 +24,11 @@
     
     // Setting delegates
     
-    self.imageStore = [[NSMutableArray alloc] init];
-    
     UIImage *daft = [UIImage imageNamed:@"icecrema.png"];
     UIImage *pink = [UIImage imageNamed:@"check.png"];
     
-    [_imageStore addObject:daft];
-    [_imageStore addObject:pink];
+    [[STDImageStore sharedStore] addImage:daft];
+    [[STDImageStore sharedStore] addImage:pink];
     
     myCollectionView.delegate = self;
     myCollectionView.dataSource = self;
@@ -69,7 +67,7 @@
     
     NSLog(@"path %li",(long)indexPath.row);
     UIImageView *cellImageView = (UIImageView *)[cell.contentView viewWithTag:100];
-    cellImageView.image = [_imageStore objectAtIndex:indexPath.row];
+    cellImageView.image = [[[STDImageStore sharedStore] allImages] objectAtIndex:indexPath.row];
     cell.backgroundColor = [UIColor greenColor];
     
     return cell;
@@ -77,7 +75,7 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    NSInteger imageCount = [_imageStore count];
+    NSInteger imageCount = [[[STDImageStore sharedStore] allImages] count];
     NSLog(@"objects in the array %ld", (long)imageCount);
     return imageCount;
 }

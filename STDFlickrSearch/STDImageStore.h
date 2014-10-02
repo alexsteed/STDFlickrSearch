@@ -7,7 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @interface STDImageStore : NSObject
+
++ (instancetype)sharedStore;
+
+@property (nonatomic, readonly) NSArray *allImages;
+- (void)addImage:(UIImage *)image;
+- (BOOL)saveChanges;
 
 @end
