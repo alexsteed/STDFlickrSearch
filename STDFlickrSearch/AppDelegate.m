@@ -24,8 +24,10 @@
     CGRect screenBounds = [[UIScreen mainScreen] bounds];
     self.window = [[UIWindow alloc] initWithFrame:screenBounds];
     
+    
     MyViewController *viewController = [[MyViewController alloc] init];
-    self.window.rootViewController = viewController;
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:viewController];
+    self.window.rootViewController = navController;
     // [self.window setNeedsDisplay];
     [self.window makeKeyAndVisible];
     // Override point for customization after application launch.

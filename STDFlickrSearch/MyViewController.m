@@ -8,13 +8,22 @@
 
 #import "MyViewController.h"
 #import "STDImageStore.h"
+#import "STDDetailViewController.h"
 
 @interface MyViewController ()
-
 
 @end
 
 @implementation MyViewController
+
+- (instancetype)init
+{
+    self = [super init];
+    UINavigationItem *navItem = self.navigationItem;
+    navItem.title = @"FlickrSearch";
+    
+    return self;
+}
 
 #pragma mark - view events
 
@@ -55,6 +64,10 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     NSLog(@"Select Cell %li", (long)indexPath.row);
+
+    STDDetailViewController *dvc = [[STDDetailViewController alloc] init];
+    dvc.row = indexPath.row;
+    [self.navigationController pushViewController:dvc animated:YES];
 }
 
 #pragma mark - UICollectionViewDataSource Delegate methods
