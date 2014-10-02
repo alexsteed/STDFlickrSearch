@@ -7,6 +7,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MyViewController">
             <connections>
                 <outlet property="myCollectionView" destination="zgg-Rf-XjK" id="eSa-tB-TeT"/>
+                <outlet property="searchTextField" destination="nQz-Si-b8R" id="D09-qw-sXo"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -25,20 +26,32 @@
                     </collectionViewFlowLayout>
                 </collectionView>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nQz-Si-b8R">
-                    <rect key="frame" x="8" y="76" width="304" height="30"/>
+                    <rect key="frame" x="8" y="76" width="243" height="30"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Rf-B7-1pp">
+                    <rect key="frame" x="259" y="76" width="53" height="30"/>
+                    <state key="normal" title="Search">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="searchButtonPressed:" destination="-1" eventType="touchUpInside" id="xnM-o4-Nf3"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="zgg-Rf-XjK" secondAttribute="bottom" id="5gP-bB-qhA"/>
                 <constraint firstItem="nQz-Si-b8R" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="76" id="9Db-b0-7aj"/>
+                <constraint firstAttribute="trailing" secondItem="0Rf-B7-1pp" secondAttribute="trailing" constant="8" id="P9I-nQ-gUg"/>
                 <constraint firstItem="nQz-Si-b8R" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="R3r-y9-gHr"/>
                 <constraint firstItem="zgg-Rf-XjK" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="U1g-FP-qgQ"/>
                 <constraint firstAttribute="trailing" secondItem="zgg-Rf-XjK" secondAttribute="trailing" id="Zaf-z5-GCK"/>
-                <constraint firstAttribute="trailing" secondItem="nQz-Si-b8R" secondAttribute="trailing" constant="8" id="amT-mf-1N5"/>
+                <constraint firstAttribute="trailing" secondItem="nQz-Si-b8R" secondAttribute="trailing" constant="69" id="amT-mf-1N5"/>
                 <constraint firstAttribute="centerX" secondItem="zgg-Rf-XjK" secondAttribute="centerX" id="cHa-BY-r1g"/>
+                <constraint firstItem="0Rf-B7-1pp" firstAttribute="leading" secondItem="nQz-Si-b8R" secondAttribute="trailing" constant="8" id="exG-Iv-z1D"/>
+                <constraint firstItem="0Rf-B7-1pp" firstAttribute="centerY" secondItem="nQz-Si-b8R" secondAttribute="centerY" id="f9F-td-TbF"/>
                 <constraint firstItem="zgg-Rf-XjK" firstAttribute="top" secondItem="nQz-Si-b8R" secondAttribute="bottom" constant="8" id="vun-pK-Rlo"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>

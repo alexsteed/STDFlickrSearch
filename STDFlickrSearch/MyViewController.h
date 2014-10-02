@@ -13,4 +13,6 @@
     __weak IBOutlet UICollectionView *myCollectionView;
 }
 
+@property (weak, nonatomic) IBOutlet UITextField *searchTextField;
+
 @end

@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "MyViewController.h"
+#import "FlickrKit.h"
 
 @interface AppDelegate ()
 
@@ -24,13 +25,20 @@
     CGRect screenBounds = [[UIScreen mainScreen] bounds];
     self.window = [[UIWindow alloc] initWithFrame:screenBounds];
     
+    // Initialize FlickrKit
+    NSString *apiKey = @"194a0331e05b01ddd532f450a92c1945";
+    NSString *secret = @"a588af1e32686892";
+    if (!apiKey) {
+        NSLog(@"\n----------------------------------\nYou need to enter your own 'apiKey' and 'secret' in FKAppDelegate for the demo to run. \n\nYou can get these from your Flickr account settings.\n----------------------------------\n");
+        exit(0);
+    }
+    [[FlickrKit sharedFlickrKit] initializeWithAPIKey:apiKey sharedSecret:secret];
     
     MyViewController *viewController = [[MyViewController alloc] init];
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:viewController];
+    
     self.window.rootViewController = navController;
-    // [self.window setNeedsDisplay];
     [self.window makeKeyAndVisible];
-    // Override point for customization after application launch.
     return YES;
 }
 
