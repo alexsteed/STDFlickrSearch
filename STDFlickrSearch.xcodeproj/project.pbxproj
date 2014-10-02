@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5E21528F19DC178800526EA8 /* icecrema.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E21528D19DC178800526EA8 /* icecrema.png */; };
+		5E21529019DC178800526EA8 /* check.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E21528E19DC178800526EA8 /* check.png */; };
 		5E9D888119DA88CF002C1521 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E9D888019DA88CF002C1521 /* main.m */; };
 		5E9D888419DA88CF002C1521 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E9D888319DA88CF002C1521 /* AppDelegate.m */; };
 		5E9D888A19DA88CF002C1521 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E9D888819DA88CF002C1521 /* Main.storyboard */; };
@@ -16,7 +18,6 @@
 		5E9D88ED19DBD906002C1521 /* MyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E9D88EB19DBD906002C1521 /* MyViewController.m */; };
 		5E9D88EE19DBD906002C1521 /* MyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E9D88EC19DBD906002C1521 /* MyViewController.xib */; };
 		5E9D88F019DBDA0D002C1521 /* MyCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E9D88EF19DBDA0D002C1521 /* MyCollectionViewCell.xib */; };
-		5E9D88F419DBFAB1002C1521 /* MyImageStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E9D88F319DBFAB1002C1521 /* MyImageStore.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,6 +31,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5E21528D19DC178800526EA8 /* icecrema.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icecrema.png; sourceTree = "<group>"; };
+		5E21528E19DC178800526EA8 /* check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = check.png; sourceTree = "<group>"; };
 		5E9D887B19DA88CF002C1521 /* STDFlickrSearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = STDFlickrSearch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E9D887F19DA88CF002C1521 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5E9D888019DA88CF002C1521 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -45,8 +48,6 @@
 		5E9D88EB19DBD906002C1521 /* MyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyViewController.m; sourceTree = "<group>"; };
 		5E9D88EC19DBD906002C1521 /* MyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyViewController.xib; sourceTree = "<group>"; };
 		5E9D88EF19DBDA0D002C1521 /* MyCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyCollectionViewCell.xib; sourceTree = "<group>"; };
-		5E9D88F219DBFAB1002C1521 /* MyImageStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyImageStore.h; sourceTree = "<group>"; };
-		5E9D88F319DBFAB1002C1521 /* MyImageStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyImageStore.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,7 +71,6 @@
 		5E9D887219DA88CF002C1521 = {
 			isa = PBXGroup;
 			children = (
-				5E9D88F119DBF56E002C1521 /* Images */,
 				5E9D887D19DA88CF002C1521 /* STDFlickrSearch */,
 				5E9D889719DA88CF002C1521 /* STDFlickrSearchTests */,
 				5E9D887C19DA88CF002C1521 /* Products */,
@@ -89,14 +89,14 @@
 		5E9D887D19DA88CF002C1521 /* STDFlickrSearch */ = {
 			isa = PBXGroup;
 			children = (
-				5E9D88F219DBFAB1002C1521 /* MyImageStore.h */,
-				5E9D88F319DBFAB1002C1521 /* MyImageStore.m */,
-				5E9D888219DA88CF002C1521 /* AppDelegate.h */,
-				5E9D888319DA88CF002C1521 /* AppDelegate.m */,
+				5E21528D19DC178800526EA8 /* icecrema.png */,
+				5E21528E19DC178800526EA8 /* check.png */,
 				5E9D88EA19DBD906002C1521 /* MyViewController.h */,
 				5E9D88EB19DBD906002C1521 /* MyViewController.m */,
-				5E9D88EF19DBDA0D002C1521 /* MyCollectionViewCell.xib */,
 				5E9D88EC19DBD906002C1521 /* MyViewController.xib */,
+				5E9D88EF19DBDA0D002C1521 /* MyCollectionViewCell.xib */,
+				5E9D888219DA88CF002C1521 /* AppDelegate.h */,
+				5E9D888319DA88CF002C1521 /* AppDelegate.m */,
 				5E9D888819DA88CF002C1521 /* Main.storyboard */,
 				5E9D888B19DA88CF002C1521 /* Images.xcassets */,
 				5E9D888D19DA88CF002C1521 /* LaunchScreen.xib */,
@@ -129,13 +129,6 @@
 				5E9D889919DA88CF002C1521 /* Info.plist */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		5E9D88F119DBF56E002C1521 /* Images */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -220,8 +213,10 @@
 			files = (
 				5E9D88F019DBDA0D002C1521 /* MyCollectionViewCell.xib in Resources */,
 				5E9D888A19DA88CF002C1521 /* Main.storyboard in Resources */,
+				5E21529019DC178800526EA8 /* check.png in Resources */,
 				5E9D888F19DA88CF002C1521 /* LaunchScreen.xib in Resources */,
 				5E9D88EE19DBD906002C1521 /* MyViewController.xib in Resources */,
+				5E21528F19DC178800526EA8 /* icecrema.png in Resources */,
 				5E9D888C19DA88CF002C1521 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -243,7 +238,6 @@
 				5E9D888419DA88CF002C1521 /* AppDelegate.m in Sources */,
 				5E9D88ED19DBD906002C1521 /* MyViewController.m in Sources */,
 				5E9D888119DA88CF002C1521 /* main.m in Sources */,
-				5E9D88F419DBFAB1002C1521 /* MyImageStore.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

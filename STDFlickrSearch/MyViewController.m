@@ -10,6 +10,8 @@
 
 @interface MyViewController ()
 
+@property (nonatomic, strong) NSMutableArray *imageStore;
+
 @end
 
 @implementation MyViewController
@@ -21,6 +23,15 @@
     // Do any additional setup after loading the view from its nib.
     
     // Setting delegates
+    
+    self.imageStore = [[NSMutableArray alloc] init];
+    
+    UIImage *daft = [UIImage imageNamed:@"icecrema.png"];
+    UIImage *pink = [UIImage imageNamed:@"check.png"];
+    
+    [_imageStore addObject:daft];
+    [_imageStore addObject:pink];
+    
     myCollectionView.delegate = self;
     myCollectionView.dataSource = self;
     
@@ -56,17 +67,19 @@
     
     UICollectionViewCell *cell = [cv dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
     
+    NSLog(@"path %li",(long)indexPath.row);
+    UIImageView *cellImageView = (UIImageView *)[cell.contentView viewWithTag:100];
+    cellImageView.image = [_imageStore objectAtIndex:indexPath.row];
     cell.backgroundColor = [UIColor greenColor];
-    
-    UILabel *cellLabel = (UILabel *)[cell.contentView viewWithTag:100];
-    cellLabel.text = [NSString stringWithFormat:@"Cell %li", (long)indexPath.row];
     
     return cell;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 10;
+    NSInteger imageCount = [_imageStore count];
+    NSLog(@"objects in the array %ld", (long)imageCount);
+    return imageCount;
 }
 
 #pragma mark - UICollectionViewLayout Delegate Methods
