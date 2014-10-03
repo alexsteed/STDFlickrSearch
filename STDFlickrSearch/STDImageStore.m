@@ -81,4 +81,9 @@
     return [NSKeyedArchiver archiveRootObject:self.privateImages toFile:path];
 }
 
+- (void)clearData
+{
+    [self.privateImages removeAllObjects];
+}
+
 @end

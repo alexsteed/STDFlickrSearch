@@ -15,6 +15,7 @@
 
 @property (nonatomic, readonly) NSArray *allImages;
 - (void)addImage:(UIImage *)image;
+- (void)clearData;
 - (BOOL)saveChanges;
 
 @end

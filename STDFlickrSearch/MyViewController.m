@@ -9,6 +9,7 @@
 #import "MyViewController.h"
 #import "STDImageStore.h"
 #import "STDDetailViewController.h"
+#import "FlickrKit.h"
 
 @interface MyViewController ()
 
@@ -32,13 +33,6 @@
     // Do any additional setup after loading the view from its nib.
     
     // Setting delegates
-    
-    UIImage *daft = [UIImage imageNamed:@"icecrema.png"];
-    UIImage *pink = [UIImage imageNamed:@"check.png"];
-    
-    [[STDImageStore sharedStore] addImage:daft];
-    [[STDImageStore sharedStore] addImage:pink];
-    
     myCollectionView.delegate = self;
     myCollectionView.dataSource = self;
     
@@ -83,6 +77,8 @@
     cellImageView.image = [[[STDImageStore sharedStore] allImages] objectAtIndex:indexPath.row];
     cell.backgroundColor = [UIColor greenColor];
     
+    NSLog(@"cell nb de photos = %li", [[[STDImageStore sharedStore] allImages] count]);
+
     return cell;
 }
 
@@ -101,5 +97,40 @@
     
     return size;
 }
+
+#pragma mark - search
+
+- (IBAction)searchButtonPressed:(id)sender
+{
+    if (self.searchTextField.text == nil)
+        return;
+    
+    FKFlickrPhotosSearch *search = [[FKFlickrPhotosSearch alloc] init];
+    search.text = self.searchTextField.text;
+    search.per_page = @"25";
+    [[FlickrKit sharedFlickrKit] call:search completion:^(NSDictionary *response, NSError *error)
+    {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (response)
+            {
+                [[STDImageStore sharedStore] clearData];
+                for (NSDictionary *photoDictionary in [response valueForKeyPath:@"photos.photo"])
+                {
+                    NSURL *url = [[FlickrKit sharedFlickrKit] photoURLForSize:FKPhotoSizeSmall240 fromPhotoDictionary:photoDictionary];
+                    NSData * imageData = [[NSData alloc] initWithContentsOfURL: url];
+                    [[STDImageStore sharedStore] addImage:[UIImage imageWithData:imageData]];
+                    NSLog(@"search nb de photos = %li", [[[STDImageStore sharedStore] allImages] count]);
+                }
+                [myCollectionView reloadData];
+            }
+            else
+            {
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:error.localizedDescription delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+                [alert show];
+            }
+        });
+    }];
+}
+
 
 @end
