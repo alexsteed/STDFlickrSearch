@@ -26,8 +26,8 @@
     self.window = [[UIWindow alloc] initWithFrame:screenBounds];
     
     // Initialize FlickrKit
-    NSString *apiKey = @"194a0331e05b01ddd532f450a92c1945";
-    NSString *secret = @"a588af1e32686892";
+    NSString *apiKey = @"apiKey";
+    NSString *secret = @"secret";
     if (!apiKey) {
         NSLog(@"\n----------------------------------\nYou need to enter your own 'apiKey' and 'secret' in FKAppDelegate for the demo to run. \n\nYou can get these from your Flickr account settings.\n----------------------------------\n");
         exit(0);
