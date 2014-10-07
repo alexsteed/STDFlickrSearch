@@ -8,9 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MyViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate>
+@interface MyViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate, UITextFieldDelegate>
 {
     __weak IBOutlet UICollectionView *myCollectionView;
+    __weak IBOutlet UIButton *searchButton;
 }
 
 @property (weak, nonatomic) IBOutlet UITextField *searchTextField;

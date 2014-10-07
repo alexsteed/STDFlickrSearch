@@ -17,11 +17,33 @@
 
 @implementation MyViewController
 
+- (UIImage *)collectionViewBackgroundImage
+{
+    CGSize cvs = myCollectionView.bounds.size;
+    CGRect rect = CGRectMake(0.0f, 0.0f, cvs.width, cvs.height);
+    UIGraphicsBeginImageContext(rect.size);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    
+    CGContextSetFillColorWithColor(context, [[UIColor whiteColor] CGColor]);
+    CGContextFillRect(context, rect);
+    
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return image;
+}
+
+#pragma mark - initialization
+
 - (instancetype)init
 {
     self = [super init];
+    
     UINavigationItem *navItem = self.navigationItem;
     navItem.title = @"FlickrSearch";
+    
+    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+    [nc addObserver:self selector:@selector(searchButtonShouldBeEnabled:) name:UITextFieldTextDidChangeNotification object:nil];
     
     return self;
 }
@@ -33,10 +55,16 @@
     // Do any additional setup after loading the view from its nib.
     
     // Setting delegates
+    
     myCollectionView.delegate = self;
     myCollectionView.dataSource = self;
+    self.searchTextField.delegate = self;
     
-    myCollectionView.backgroundColor = [UIColor whiteColor];
+    // Dismiss keyboard when background is tapped
+    myCollectionView.backgroundView = [[UIImageView alloc] initWithImage:[self collectionViewBackgroundImage]];
+    myCollectionView.backgroundView.userInteractionEnabled = YES;
+    UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
+    myCollectionView.backgroundView.gestureRecognizers = @[tapRecognizer];
     
     // Setting cell
     UINib *cellNib = [UINib nibWithNibName:@"MyCollectionViewCell" bundle:nil];
@@ -72,20 +100,16 @@
     
     UICollectionViewCell *cell = [cv dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
     
-    NSLog(@"path %li",(long)indexPath.row);
     UIImageView *cellImageView = (UIImageView *)[cell.contentView viewWithTag:100];
     cellImageView.image = [[[STDImageStore sharedStore] allImages] objectAtIndex:indexPath.row];
     cell.backgroundColor = [UIColor greenColor];
     
-    NSLog(@"cell nb de photos = %li", [[[STDImageStore sharedStore] allImages] count]);
-
     return cell;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
     NSInteger imageCount = [[[STDImageStore sharedStore] allImages] count];
-    NSLog(@"objects in the array %ld", (long)imageCount);
     return imageCount;
 }
 
@@ -102,12 +126,9 @@
 
 - (IBAction)searchButtonPressed:(id)sender
 {
-    if (self.searchTextField.text == nil)
-        return;
-    
     FKFlickrPhotosSearch *search = [[FKFlickrPhotosSearch alloc] init];
     search.text = self.searchTextField.text;
-    search.per_page = @"25";
+    search.per_page = @"5";
     [[FlickrKit sharedFlickrKit] call:search completion:^(NSDictionary *response, NSError *error)
     {
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -119,7 +140,6 @@
                     NSURL *url = [[FlickrKit sharedFlickrKit] photoURLForSize:FKPhotoSizeSmall240 fromPhotoDictionary:photoDictionary];
                     NSData * imageData = [[NSData alloc] initWithContentsOfURL: url];
                     [[STDImageStore sharedStore] addImage:[UIImage imageWithData:imageData]];
-                    NSLog(@"search nb de photos = %li", [[[STDImageStore sharedStore] allImages] count]);
                 }
                 [myCollectionView reloadData];
             }
@@ -132,5 +152,40 @@
     }];
 }
 
+#pragma mark - TextField methods
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+{
+    return YES;
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
+}
+
+#pragma mark - enable and disable searchButton
+
+- (void)searchButtonShouldBeEnabled:(NSNotification *)note
+{
+    if ([self.searchTextField.text length] > 0)
+    {
+        NSLog(@"search button enabled");
+        self->searchButton.enabled = YES;
+    }
+    else
+    {
+        NSLog(@"search button disabled");
+        self->searchButton.enabled = NO;
+    }
+}
+
+#pragma mark - dismiss keyboard
+
+-(void)dismissKeyboard
+{
+    [self.searchTextField resignFirstResponder];
+}
 
 @end
