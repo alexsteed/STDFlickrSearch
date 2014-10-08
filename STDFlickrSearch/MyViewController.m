@@ -126,11 +126,7 @@
 
 - (IBAction)searchButtonPressed:(id)sender
 {
-    // Set activity view
-//    UIActivityIndicatorView *activityView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-//    activityView.center = self.view.center;
     [activityViewer startAnimating];
-//    [self.view addSubview:activityView];
     [myCollectionView reloadData];
     
     FKFlickrPhotosSearch *search = [[FKFlickrPhotosSearch alloc] init];
