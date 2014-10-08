@@ -12,6 +12,7 @@
 {
     __weak IBOutlet UICollectionView *myCollectionView;
     __weak IBOutlet UIButton *searchButton;
+    __weak IBOutlet UIActivityIndicatorView *activityViewer;
 }
 
 @property (weak, nonatomic) IBOutlet UITextField *searchTextField;

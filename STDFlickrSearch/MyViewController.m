@@ -126,9 +126,16 @@
 
 - (IBAction)searchButtonPressed:(id)sender
 {
+    // Set activity view
+//    UIActivityIndicatorView *activityView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+//    activityView.center = self.view.center;
+    [activityViewer startAnimating];
+//    [self.view addSubview:activityView];
+    [myCollectionView reloadData];
+    
     FKFlickrPhotosSearch *search = [[FKFlickrPhotosSearch alloc] init];
     search.text = self.searchTextField.text;
-    search.per_page = @"5";
+    search.per_page = @"21";
     [[FlickrKit sharedFlickrKit] call:search completion:^(NSDictionary *response, NSError *error)
     {
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -148,6 +155,7 @@
                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:error.localizedDescription delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
                 [alert show];
             }
+            [activityViewer stopAnimating];
         });
     }];
 }
@@ -170,15 +178,9 @@
 - (void)searchButtonShouldBeEnabled:(NSNotification *)note
 {
     if ([self.searchTextField.text length] > 0)
-    {
-        NSLog(@"search button enabled");
         self->searchButton.enabled = YES;
-    }
     else
-    {
-        NSLog(@"search button disabled");
         self->searchButton.enabled = NO;
-    }
 }
 
 #pragma mark - dismiss keyboard

@@ -10,7 +10,6 @@
 
 @interface STDDetailViewController : UIViewController
 
-@property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (nonatomic) NSInteger row;
 
 @end
