@@ -17,23 +17,7 @@
 
 @implementation MyViewController
 
-- (UIImage *)collectionViewBackgroundImage
-{
-    CGSize cvs = myCollectionView.bounds.size;
-    CGRect rect = CGRectMake(0.0f, 0.0f, cvs.width, cvs.height);
-    UIGraphicsBeginImageContext(rect.size);
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    
-    CGContextSetFillColorWithColor(context, [[UIColor whiteColor] CGColor]);
-    CGContextFillRect(context, rect);
-    
-    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-    return image;
-}
-
-#pragma mark - initialization
+#pragma mark - Initialization
 
 - (instancetype)init
 {
@@ -44,21 +28,24 @@
     
     NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
     [nc addObserver:self selector:@selector(searchButtonShouldBeEnabled:) name:UITextFieldTextDidChangeNotification object:nil];
-    
     return self;
 }
 
-#pragma mark - view events
+#pragma mark - View events
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
     // Setting delegates
-    
+
     myCollectionView.delegate = self;
     myCollectionView.dataSource = self;
     self.searchTextField.delegate = self;
+    
+    NSLog(@"Navframe Height=%f",
+          self.navigationController.navigationBar.frame.size.height);
     
     // Dismiss keyboard when background is tapped
     myCollectionView.backgroundView = [[UIImageView alloc] initWithImage:[self collectionViewBackgroundImage]];
@@ -85,8 +72,6 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"Select Cell %li", (long)indexPath.row);
-
     STDDetailViewController *dvc = [[STDDetailViewController alloc] init];
     dvc.row = indexPath.row;
     [self.navigationController pushViewController:dvc animated:YES];
@@ -102,7 +87,9 @@
     
     UIImageView *cellImageView = (UIImageView *)[cell.contentView viewWithTag:100];
     cellImageView.image = [[[STDImageStore sharedStore] allImages] objectAtIndex:indexPath.row];
-    cell.backgroundColor = [UIColor greenColor];
+    cellImageView.contentMode = UIViewContentModeScaleAspectFit;
+//    cellImageView.translatesAutoresizingMaskIntoConstraints = NO;
+    cell.backgroundColor = [UIColor clearColor];
     
     return cell;
 }
@@ -113,16 +100,27 @@
     return imageCount;
 }
 
+#pragma mark - Layout management
+
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section
+{
+    return 5;
+}
+
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
+{
+    return 5;
+}
+
 #pragma mark - UICollectionViewLayout Delegate Methods
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    CGSize size = CGSizeMake(100.0, 100.0);
-    
+    CGSize size = CGSizeMake(120.0, 80.0);
     return size;
 }
 
-#pragma mark - search
+#pragma mark - Search
 
 - (IBAction)searchButtonPressed:(id)sender
 {
@@ -169,7 +167,7 @@
     return YES;
 }
 
-#pragma mark - enable and disable searchButton
+#pragma mark - Enable or disable searchButton
 
 - (void)searchButtonShouldBeEnabled:(NSNotification *)note
 {
@@ -180,6 +178,23 @@
 }
 
 #pragma mark - dismiss keyboard
+
+// Create a background image to handle a touch event
+- (UIImage *)collectionViewBackgroundImage
+{
+    CGSize cvs = myCollectionView.bounds.size;
+    CGRect rect = CGRectMake(0.0f, 0.0f, cvs.width, cvs.height);
+    UIGraphicsBeginImageContext(rect.size);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    
+    CGContextSetFillColorWithColor(context, [[UIColor whiteColor] CGColor]);
+    CGContextFillRect(context, rect);
+    
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return image;
+}
 
 -(void)dismissKeyboard
 {

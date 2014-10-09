@@ -38,7 +38,7 @@
     float xOrigin = 0;
     for (int i = 0; i < [imageStore count]; i++)
     {
-        CGRect imgRect = CGRectMake(xOrigin + 5, 0, screenRect.size.width - 10, self.view.frame.size.height);
+        CGRect imgRect = CGRectMake(xOrigin + 5, 0, screenRect.size.width - 10, screenRect.size.height - 100);
         UIImageView *imgView = [[UIImageView alloc] initWithFrame:imgRect];
         imgView.image = [imageStore objectAtIndex:i];
         imgView.contentMode = UIViewContentModeScaleAspectFit;
