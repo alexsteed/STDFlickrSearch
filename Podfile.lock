@@ -1,10 +1,13 @@
 PODS:
   - FlickrKit (1.0.4)
+  - Reveal-iOS-SDK (1.0.6)
 
 DEPENDENCIES:
   - FlickrKit (~> 1.0)
+  - Reveal-iOS-SDK (~> 1.0.5)
 
 SPEC CHECKSUMS:
   FlickrKit: 1bbc5c91f065fa0d7ce4119c5d5c63a9241eea73
+  Reveal-iOS-SDK: 74a39b426dbc915962704ed24f43ee32ae7797f9
 
 COCOAPODS: 0.34.1

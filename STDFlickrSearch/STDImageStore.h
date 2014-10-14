@@ -12,10 +12,10 @@
 @interface STDImageStore : NSObject
 
 + (instancetype)sharedStore;
+- (void)clearData;
 
 @property (nonatomic, readonly) NSArray *allImages;
 - (void)addImage:(UIImage *)image;
-- (void)clearData;
 - (BOOL)saveChanges;
 
 @end

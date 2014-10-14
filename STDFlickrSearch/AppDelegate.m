@@ -36,7 +36,8 @@
     
     MyViewController *viewController = [[MyViewController alloc] init];
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:viewController];
-    
+    navController.navigationBar.barStyle = UIBarStyleBlackTranslucent;
+    navController.automaticallyAdjustsScrollViewInsets = NO;
     self.window.rootViewController = navController;
     [self.window makeKeyAndVisible];
     return YES;
